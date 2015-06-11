@@ -1,7 +1,7 @@
 require('reflect-metadata');
 
 module.exports = (function(){
-	function Metawriter(namespace, parent = false){
+	function Metawriter(namespace, parent){
 		this.namespace = parent ? ( parent.namespace + ':' + namespace )  : namespace;
 	}
 

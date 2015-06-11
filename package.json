@@ -1,6 +1,6 @@
 {
   "name": "metawriter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple utility for reading and writing namespaced metadata using the Reflection metadata API",
   "main": "metawriter.js",
   "scripts": {
