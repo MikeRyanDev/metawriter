@@ -54,6 +54,14 @@ describe('Metawriter', function(){
 			parent.has('anotherKey', Test.prototype, 'someMethod').should.be.ok;
 			parent.get('anotherKey', Test.prototype, 'someMethod').should.eql('anotherTest');
 		});
+
+		it('should let you push metadata to an array field', function(){
+			parent.push('array', 1, Test);
+			parent.push('array', 2, Test);
+			parent.push('array', 3, Test);
+
+			parent.get('array', Test).should.eql([1, 2, 3]);
+		});
 	});
 
 	describe('checking for metadata', function(){

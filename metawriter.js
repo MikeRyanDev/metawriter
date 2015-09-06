@@ -7,14 +7,14 @@ module.exports = (function(){
 
 	/**
 	 * Get metadata for the given target/propertyKey
-	 * 
+	 *
 	 * @param  {string} key         The key of the metadata
 	 * @param  {any} target      The target class, function, or object
 	 * @param  {string} propertyKey Optional property key of the class, function, or object
 	 * @return {any}             The metadata for the key on the target/property key
 	 */
 	Metawriter.prototype.get = function(key, target, propertyKey){
-		return Reflect.getMetadata(this._k(key), target, propertyKey); 
+		return Reflect.getMetadata(this._k(key), target, propertyKey);
 	};
 
 	Metawriter.prototype.getOwn = function(key, target, propertyKey){
@@ -23,6 +23,14 @@ module.exports = (function(){
 
 	Metawriter.prototype.set = function(key, value, target, propertyKey){
 		Reflect.defineMetadata(this._k(key), value, target, propertyKey);
+	};
+
+	Metawriter.prototype.push = function(key, value, target, propertyKey){
+		if(!this.has(key, target, propertyKey)){
+			this.set(key, [], target, propertyKey);
+		}
+
+		this.get(key, target, propertyKey).push(value);
 	};
 
 	Metawriter.prototype.has = function(key, target, propertyKey){
